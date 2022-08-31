@@ -89,15 +89,18 @@ h6 {
 }
 
 /*--------------------*/
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 .bigred {
     font-size: 20px;
     color: red;
 }
+/* Import and declare body font */
+
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body{
     font-family: 'Jost', sans-serif;
+    font-style: normal;
     background: #F8F8F7;
 }
 
@@ -114,6 +117,8 @@ body{
     justify-content: space-evenly;
     background: #F8F8F7;
 }
+
+/* Left Block */
 
 .left-block {
     width: 458px;
@@ -185,13 +190,9 @@ body{
     border: 4px solid rgba(255, 255, 255, 0.6);
 }
 
-.left-block__item:hover{
-    border: 4px solid #F8F8F7;
-}
-
-.left-block__item:active{
+/* .left-block__item:active{
     border: 4px solid #FBE0DC;
-}
+} */
 
 .left-block__btn {
     font-weight: 500;
@@ -206,15 +207,7 @@ body{
     margin: 0 16px 0 0;
 }
 
-.btn:hover {
-    background: #FBE0DC;
-    color: #FF868E;
-}
-
-.btn:active {
-    color: #fff;
-    background: #FF868E;
-}
+/* --Left Block-- */
 
 .right-block {
     background: #FBE0DC;
@@ -229,12 +222,12 @@ body{
 .right-block::-webkit-scrollbar{
     display: none;
 }
-
+/* 
 .right-block__main-photo{
     position: absolute;
     top: -130px;
     left: -50px
-}
+} */
 
 .right-block__nav {
     display: flex;
@@ -267,13 +260,16 @@ body{
     position: absolute;
     top: 10px;
     left: 420px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-image: url(/img/icons/search-20.png);
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .right-block__search-btn button:hover{
     background: #FF868E;
+    background-image: url(/img/icons_white/search-white-20.png);
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .right-block__icon button{
@@ -281,14 +277,23 @@ body{
     height: 60px;
     background: #fff;
     border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin: 0 0 0 10px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.right-block__icon button:hover{
+/* .right-block__icon button:hover{
     background: #FBE0DC;
+} */
+
+.tab_1 button{
+    background-image: url(/img/icons/like-30.png);
+}
+.tab_2 button{
+    background-image: url(/img/icons/fav-30.png);
+}
+.tab_3 button{
+    background-image: url(/img/icons/dislike-30.png);
 }
 
 .right-block__nav:last-child{
@@ -768,4 +773,18 @@ body{
 
 .right-block{
     z-index: 3;
+}
+
+.right-block__search-status{
+    align-self: flex-start;
+    margin: 0 0 20px 0;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 29px;
+    color: #8C8C8C;
+}
+
+.right-block__search-status span{
+    font-weight: 500;
+    color: #1D1D1D;
 }
