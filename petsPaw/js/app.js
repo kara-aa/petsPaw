@@ -1,3 +1,4 @@
+import AnimationBtn from "./animationButtons.js";
 //Declare constants
 //Buttons
 const searchBtn = document.getElementById('nav_search');
@@ -11,109 +12,33 @@ const btnGallery = document.getElementById('btn_gallery');
 const tabVoting = document.getElementById('tab_voting');
 const tabBreeds = document.getElementById('tab_breeds');
 const tabGallery = document.getElementById('tab_gallery');
+//Blocks
+const rightBlock = document.querySelector('.right-block');
 
 //Arr buttons info
-const arrBtns = [{btn: likesBtn, status: true }, {btn: favsBtn, status: true }, {btn: dislikesBtn, status: true }];
+const arrBtns = [{ btn: likesBtn, status: true }, { btn: favsBtn, status: true }, { btn: dislikesBtn, status: true },
+    { btn: btnVoting, status: true }, { btn: btnBreeds, status: true}, { btn: btnGallery, status: true },
+    { btn: tabVoting, status: true }, { btn: tabBreeds, status: true }, { btn: tabGallery, status: true }];
 
-//Functions needed data for buttons by hover
-// function dataBtnForMouseOver(btn) {
-//     if (btn == likesBtn)
-//         return { background: '#FBE0DC', backgroundImage: 'url(/img/icons/like-30.png)', active: arrBtns[0].status };
-//     else if (btn == dislikesBtn)
-//         return { background: '#FBE0DC', backgroundImage: 'url(/img/icons/dislike-30.png)', active: arrBtns[2].status };
-//     else if (btn == favsBtn)
-//         return { background: '#FBE0DC', backgroundImage: 'url(/img/icons/fav-30.png)', active: arrBtns[1].status };
-// }
+//Function for getting status btn (active or no)
+function getStatusBtn(btn) {
+        for (let i = 0; i < arrBtns.length; i++){
+            if (btn == arrBtns[i].btn)
+                return arrBtns[i].status;
+        }
+}
 
-// function dataBtnForMouseOut(btn) {
-//     if (btn == likesBtn)
-//         return { background: '#fff', backgroundImage: 'url(/img/icons/like-30.png)', active: arrBtns[0].status };
-//     else if (btn == dislikesBtn)
-//         return { background: '#fff', backgroundImage: 'url(/img/icons/dislike-30.png)', active: arrBtns[2].status };
-//     else if (btn == favsBtn)
-//         return {background: '#fff', backgroundImage: 'url(/img/icons/fav-30.png)', active: arrBtns[1].status };
-// }
-
-// //Functions for animations by hover
-// function animationBtnMouseOver(data, btn) {
-//     if (data.active == true) {
-//         btn.style.background = data.background;
-//         btn.style.backgroundImage = data.backgroundImage;
-//         btn.style.backgroundRepeat = 'no-repeat';
-//         btn.style.backgroundPosition = 'center';
-//     }
-// }
-
-// function animationBtnMouseOut(data, btn) {
-//     if (data.active == true) {
-//         btn.style.background = data.background;
-//         btn.style.backgroundImage = data.backgroundImage;
-//         btn.style.backgroundRepeat = 'no-repeat';
-//         btn.style.backgroundPosition = 'center';
-//     }
-// }
-
-// //Functions needed data by click
-// function dataBtnForClick(btn) {
-//     if (btn == likesBtn)
-//         return { backgroundImage: 'url(/img/icons_white/like-white-30.png)' };
-//     else if (btn == dislikesBtn)
-//         return { backgroundImage: 'url(/img/icons_white/dislike-white-30.png)' };
-//     else if (btn == favsBtn)
-//         return {backgroundImage: 'url(/img/icons_white/fav-white-30.png)'};
-// }
-
-// //Animation by click
-// function animationBtnClick(data, btn) {
-//     btn.style.background = '#FF868E';
-//     btn.style.backgroundImage = data.backgroundImage;
-//     btn.style.backgroundRepeat = 'no-repeat';
-//     btn.style.backgroundPosition = 'center';
-// }
-
-// //Function for resetting styles others buttons, which not chosen
-// function resetStylesNoUsedButtons(currentBtn) {
-//     for (let i = 0; i < arrBtns.length; i++){
-//         if (currentBtn !== arrBtns[i].btn) {
-//             arrBtns[i].status = true;
-//             animationBtnMouseOut(dataBtnForMouseOut(arrBtns[i].btn), arrBtns[i].btn);
-//         }
-//         else
-//             arrBtns[i].status = false;
-//     }
-// }
-
-//Events hover for buttons
-// likesBtn.addEventListener('mouseover', (e) => { animationBtnMouseOver(dataBtnForMouseOver(likesBtn), likesBtn); });
-// likesBtn.addEventListener('mouseout', (e) => { animationBtnMouseOut(dataBtnForMouseOut(likesBtn), likesBtn); });
-// dislikesBtn.addEventListener('mouseover', (e) => { animationBtnMouseOver(dataBtnForMouseOver(dislikesBtn), dislikesBtn); });
-// dislikesBtn.addEventListener('mouseout', (e) => { animationBtnMouseOut(dataBtnForMouseOut(dislikesBtn), dislikesBtn); });
-// favsBtn.addEventListener('mouseover', (e) => { animationBtnMouseOver(dataBtnForMouseOver(favsBtn), favsBtn); });
-// favsBtn.addEventListener('mouseout', (e) => { animationBtnMouseOut(dataBtnForMouseOut(favsBtn), favsBtn); });
-
-// //Events click for buttons
-// likesBtn.addEventListener('click', (e) => {
-//     animationBtnClick(dataBtnForClick(likesBtn), likesBtn);
-//     resetStylesNoUsedButtons(likesBtn);
-// });
-// dislikesBtn.addEventListener('click', (e) => {
-//     animationBtnClick(dataBtnForClick(dislikesBtn), dislikesBtn);
-//     resetStylesNoUsedButtons(dislikesBtn);
-// });
-// favsBtn.addEventListener('click', (e) => {
-//     animationBtnClick(dataBtnForClick(favsBtn), favsBtn);
-//     resetStylesNoUsedButtons(favsBtn);
-// });
-
+//Animation by hover
 function animationBtnMouseOver() {
     let keys = Object.keys($(this));
     let btn = $(this)[keys[0]];
-    if (btn == btnVoting || btn == btnBreeds || btn == btnGallery) {
+
+    if ((btn == btnVoting || btn == btnBreeds || btn == btnGallery) && (getStatusBtn(btn) == true)) {
         $(this).css({
         background: '#FBE0DC',
     })
     }
-    else if (btn == likesBtn) {
+    else if ((btn == likesBtn) && (getStatusBtn(btn) == true)) {
         $(this).css({
             background: '#FBE0DC',
             backgroundImage: 'url(/img/icons/like-30.png)',
@@ -121,7 +46,7 @@ function animationBtnMouseOver() {
             backgroundPosition: 'center',
     })
     }
-    else if (btn == dislikesBtn) {
+    else if ((btn == dislikesBtn) && (getStatusBtn(btn) == true)) {
         $(this).css({
             background: '#FBE0DC',
             backgroundImage: 'url(/img/icons/dislike-30.png)',
@@ -129,7 +54,7 @@ function animationBtnMouseOver() {
             backgroundPosition: 'center',
     })
     }
-    else if (btn == favsBtn) {
+    else if ((btn == favsBtn) && (getStatusBtn(btn) == true)) {
         $(this).css({
             background: '#FBE0DC',
             backgroundImage: 'url(/img/icons/fav-30.png)',
@@ -137,7 +62,7 @@ function animationBtnMouseOver() {
             backgroundPosition: 'center',
     })
     }
-    else if (btn == tabVoting || btn == tabBreeds || btn == tabGallery) {
+    else if ((btn == tabVoting || btn == tabBreeds || btn == tabGallery) && (getStatusBtn(btn) == true)) {
         $(this).css({
             border: '4px solid #F8F8F7',
     })
@@ -147,12 +72,12 @@ function animationBtnMouseOver() {
 function animationBtnMouseOut() {
     let keys = Object.keys($(this));
     let btn = $(this)[keys[0]];
-    if (btn == btnVoting || btn == btnBreeds || btn == btnGallery) {
+    if ((btn == btnVoting || btn == btnBreeds || btn == btnGallery) && (getStatusBtn(btn) == true)) {
         $(this).css({
         background: '#fff',
     })
     }
-    else if (btn == likesBtn) {
+    else if ((btn == likesBtn) && (getStatusBtn(btn) == true)) {
         $(this).css({
             background: '#fff',
             backgroundImage: 'url(/img/icons/like-30.png)',
@@ -160,7 +85,7 @@ function animationBtnMouseOut() {
             backgroundPosition: 'center',
     })
     }
-    else if (btn == dislikesBtn) {
+    else if ((btn == dislikesBtn) && (getStatusBtn(btn) == true)) {
         $(this).css({
             background: '#fff',
             backgroundImage: 'url(/img/icons/dislike-30.png)',
@@ -168,7 +93,7 @@ function animationBtnMouseOut() {
             backgroundPosition: 'center',
     })
     }
-    else if (btn == favsBtn) {
+    else if ((btn == favsBtn) && (getStatusBtn(btn) == true)) {
         $(this).css({
             background: '#fff',
             backgroundImage: 'url(/img/icons/fav-30.png)',
@@ -176,8 +101,47 @@ function animationBtnMouseOut() {
             backgroundPosition: 'center',
     })
     }
-    else if (btn == tabVoting || btn == tabBreeds || btn == tabGallery) {
+    else if ((btn == tabVoting || btn == tabBreeds || btn == tabGallery)  && (getStatusBtn(btn) == true)) {
         $(this).css({
+            border: '4px solid rgba(255, 255, 255, 0.6)',
+    })
+    }
+}
+
+//Function for default button styles
+function defaultBtnStyle(btn) {
+    if (btn == btnVoting || btn == btnBreeds || btn == btnGallery) {
+        $(btn).css({
+            background: '#fff',
+            color: '#FF868E',
+    })
+    }
+    else if (btn == likesBtn) {
+        $(btn).css({
+            background: '#fff',
+            backgroundImage: 'url(/img/icons/like-30.png)',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+    })
+    }
+    else if (btn == dislikesBtn) {
+        $(btn).css({
+            background: '#fff',
+            backgroundImage: 'url(/img/icons/dislike-30.png)',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+    })
+    }
+    else if (btn == favsBtn) {
+        $(btn).css({
+            background: '#fff',
+            backgroundImage: 'url(/img/icons/fav-30.png)',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+    })
+    }
+    else if (btn == tabVoting || btn == tabBreeds || btn == tabGallery) {
+        $(btn).css({
             border: '4px solid rgba(255, 255, 255, 0.6)',
     })
     }
@@ -204,9 +168,113 @@ $('#tab_breeds').mouseout(animationBtnMouseOut);
 $('#tab_gallery').mouseover(animationBtnMouseOver);
 $('#tab_gallery').mouseout(animationBtnMouseOut);
 
+//Function for resetting styles others buttons, which not chosen
+function resetStylesNoUsedButtons(currentBtn) {
+    for (let i = 0; i < arrBtns.length; i++){
+        if (currentBtn !== arrBtns[i].btn) {
+            arrBtns[i].status = true;
+            defaultBtnStyle(arrBtns[i].btn);
+        }
+        else 
+            arrBtns[i].status = false;
+    }
+}
+
 //Animation by click
-$('#btn_voting').click(function () {
-    $(this).css({
-        background: '#000',
-    })
-})
+function animationBtnClick() {
+    let keys = Object.keys($(this));
+    let btn = $(this)[keys[0]];
+    if (btn == likesBtn) {
+        $(this).css({
+            background:'#FF868E',
+            backgroundImage: 'url(/img/icons_white/like-white-30.png)',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+        })
+    }
+    else if (btn == dislikesBtn) {
+        $(this).css({
+            background:'#FF868E',
+            backgroundImage: 'url(/img/icons_white/dislike-white-30.png)',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+        })
+    }
+    else if (btn == favsBtn) {
+        $(this).css({
+            background:'#FF868E',
+            backgroundImage: 'url(/img/icons_white/fav-white-30.png)',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+        })
+    }
+    else if (btn == btnVoting) {
+        $(this).css({
+            background:'#FF868E',
+            color: '#fff',
+        })
+        resetStylesNoUsedButtons(btn);
+        $(tabVoting).css({
+            border: '4px solid #FBE0DC',
+        })
+        arrBtns[6].status = false;
+    }
+    else if (btn == btnBreeds) {
+        $(this).css({
+            background:'#FF868E',
+            color: '#fff',
+        })
+        resetStylesNoUsedButtons(btn);
+        $(tabBreeds).css({
+            border: '4px solid #FBE0DC',
+        })
+        arrBtns[7].status = false;
+    }
+    else if (btn == btnGallery) {
+        $(this).css({
+            background:'#FF868E',
+            color: '#fff',
+        })
+        resetStylesNoUsedButtons(btn);
+        $(tabGallery).css({
+            border: '4px solid #FBE0DC',
+        })
+        arrBtns[8].status = false;
+    }
+
+    if(btn == likesBtn || btn == dislikesBtn || btn == favsBtn)
+        resetStylesNoUsedButtons(btn);
+}
+
+//Animation by click
+//Buttons
+$('#nav_like').click(animationBtnClick);
+$('#nav_dislike').click(animationBtnClick);
+$('#nav_fav').click(animationBtnClick);
+$('#btn_voting').click(animationBtnClick);
+$('#btn_breeds').click(animationBtnClick);
+$('#btn_gallery').click(animationBtnClick);
+//Tabs
+$('#tab_voting').click(animationBtnClick);
+$('#tab_breeds').click(animationBtnClick);
+$('#tab_gallery').click(animationBtnClick);
+
+//Function for resetting page
+function clearBox() {
+    rightBlock.innerHTML = '';
+    $(rightBlock).css({ background: '#F8F8F7', });
+}
+
+//Function for load content from others .html
+function loadContent(btn) {
+    clearBox;
+    if (btn == btnVoting) {
+        $(rightBlock).load('/pages/voting.html');
+    }
+    else if (btn == btnBreeds) {
+        $(rightBlock).load('/pages/breeds.html');
+    }
+    else if (btn == btnGallery) {
+        $(rightBlock).load('/pages/gallery.html');
+    }
+}
