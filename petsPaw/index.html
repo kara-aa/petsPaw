@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="import" href="/pages/voiting.html">
+    <script src="/js/jquery-3.6.1.min.js"></script>
     <title>Document</title>
 </head>
 <body>
     <div class="wrapper">
+        
         <div class="container">
             <div class="left-block">
                 <div class="left-block__content">
@@ -21,48 +22,49 @@
                     <div class="left-block__text">Lets start using The Cat API</div>
                     <div class="left-block__sections">
                         <div class="left-block__section">
-                            <div class="left-block__item item_1">
+                            <div class="left-block__item item_1" id="tab_voting">
                                 <img src="/img/mainSlide/vote-table.png" alt="">
                             </div>
-                            <button class="left-block__btn btn">voting</button>
+                            <button class="left-block__btn btn" id="btn_voting">voting</button>
                         </div>
                         <div class="left-block__section">
-                            <div class="left-block__item item_2">
+                            <div class="left-block__item item_2" id="tab_breeds">
                                 <img src="/img/mainSlide/pet-breeds.png" alt="">
                             </div>
-                            <button class="left-block__btn btn">breeds</button>
+                            <button class="left-block__btn btn" id="btn_breeds">breeds</button>
                         </div>
                         <div class="left-block__section">
-                            <div class="left-block__item item_3">
+                            <div class="left-block__item item_3" id="tab_gallery">
                                 <img src="/img/mainSlide/images-search.png" alt="">
                             </div>
-                            <button class="left-block__btn btn">gallery</button>
+                            <button class="left-block__btn btn" id="btn_gallery">gallery</button>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="right-block">
-                <!-- <img src="/img/mainSlide/girl-and-pet.png" alt="" class="righ-block__main-photo"> -->
+                <!-- <img src="/img/mainSlide/girl-and-pet.png" alt="" class="right-block__main-photo"> -->
                 <div class="right-block__nav">
                     <div class="right-block__searcher">
                         <input type="text" placeholder="Search for breeds by name">
                     </div>
                     <div class="right-block__search-btn">
-                        <img src="/img/icons/search-20.png" alt="">
+                        <button id="nav_search"></button>
                     </div>
-                    <div class="right-block__icon">
-                        <img src="/img/icons/like-30.png" alt="">
+                    <div class="right-block__icon tab_1">
+                        <button id="nav_like"></button>
                     </div>
-                    <div class="right-block__icon">
-                        <img src="/img/icons/fav-30.png" alt="">
+                    <div class="right-block__icon tab_2">
+                        <button id="nav_fav"></button>
                     </div>
-                    <div class="right-block__icon">
-                        <img src="/img/icons/dislike-30.png" alt="">
+                    <div class="right-block__icon tab_3">
+                        <button id="nav_dislike"></button>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>
 </body>
-<script src="/js/app.js"></script>
+<script type="module" src="/js/app.js"></script>
 </html>
