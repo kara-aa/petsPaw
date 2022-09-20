@@ -190,10 +190,6 @@ body{
     border: 4px solid rgba(255, 255, 255, 0.6);
 }
 
-/* .left-block__item:active{
-    border: 4px solid #FBE0DC;
-} */
-
 .left-block__btn {
     font-weight: 500;
     font-size: 12px;
@@ -222,12 +218,11 @@ body{
 .right-block::-webkit-scrollbar{
     display: none;
 }
-/* 
+
 .right-block__main-photo{
     position: absolute;
-    top: -130px;
-    left: -50px
-} */
+    top: -100px;
+}
 
 .right-block__nav {
     display: flex;
@@ -241,6 +236,10 @@ body{
     border-radius: 20px;
     padding: 0 0 0 20px;
     position: relative;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #1D1D1D;
 }
 
 .right-block__searcher input::placeholder{
@@ -250,6 +249,23 @@ body{
     font-size: 20px;
     line-height: 30px;
     color: #8C8C8C;
+}
+
+.right-block__searcher input:hover{
+    border: 2px solid #FBE0DC;
+}
+.right-block__searcher input:hover::placeholder{
+    color: #fff;
+}
+
+.right-block__searcher input:active{
+    border: 2px solid #FF868E;
+}
+.right-block__searcher input:active::placeholder {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #1D1D1D;
 }
 
 .right-block__search-btn button{
@@ -281,10 +297,6 @@ body{
     background-repeat: no-repeat;
     background-position: center;
 }
-
-/* .right-block__icon button:hover{
-    background: #FBE0DC;
-} */
 
 .tab_1 button{
     background-image: url(/img/icons/like-30.png);
@@ -322,12 +334,18 @@ body{
     height: 40px;
     border-radius: 10px;
     background: #FBE0DC;
+    background-image: url('/img/icons/back-20.png');
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 10px;
     margin: 0 10px 0 0;
 }
 
 .right-block__back_btn button:hover{
     background: #FF868E;
+    background-image: url('/img/icons_white/back-white-20.png');
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .right-block__section-title {
@@ -361,6 +379,7 @@ body{
 
 .right-block__voting-icon {
     margin: 0 4px 0 0;
+    padding: 40px;
 }
 
 .right-block__voting-icon:last-child{
@@ -369,17 +388,49 @@ body{
 
 .icon_1{
     background: #97EAB9;
-    padding: 25px;
+    background-image: url('/img/icons_white/like-white-30.png');
+    background-position: center;
+    background-repeat: no-repeat;
     border-radius: 20px 0 0 20px;
 }
+
 .icon_2 {
     background: #FF868E;
-    padding: 27px 25px;
+    background-image: url('/img/icons_white/fav-white-30.png');
+    background-position: center;
+    background-repeat: no-repeat;
 }
 .icon_3 {
     background: #FFD280;
-    padding: 25px;
+    background-image: url('/img/icons_white/dislike-white-30.png');
+    background-position: center;
+    background-repeat: no-repeat;
     border-radius: 0 20px 20px 0;
+}
+
+.icon_1:hover {
+    background: rgba(151, 234, 185, 0.3);
+    background-image: url(/img/icons/like-color-30.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.icon_2:hover {
+    background: rgba(255, 134, 142, 0.3);
+    background-image: url(/img/icons/fav-30.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.icon_3:hover {
+    background: rgba(255, 210, 128, 0.3);
+    background-image: url(/img/icons/dislike-color-30.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.icon_2:active {
+    background-image: url(/img/icons_white/fav-full-white-30.png);
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .right-block__actions-history {
@@ -433,6 +484,11 @@ body{
 
 .breeds_list select{
     width: 226px;
+    border: 2px solid #fff;
+}
+
+.breeds_list select:hover{
+    border: 2px solid #FBE0DC;
 }
 
 .breeds_list{
@@ -441,6 +497,11 @@ body{
 
 .limits_list select{
     width: 101px;
+    border: 2px solid #fff;
+}
+
+.limits_list select:hover{
+    border: 2px solid #FBE0DC;
 }
 
 .right-block__sort {
@@ -454,7 +515,35 @@ body{
 .right-block__sort-item {
     background: #F8F8F7;
     border-radius: 10px;
-    padding: 9px 11px;
+    border: 2px solid #fff;
+    width: 40px;
+    height: 40px;
+}
+
+.right-block__sort-item:hover{
+    border: 2px solid #FBE0DC;
+}
+
+.sort{
+    background-image: url('/img/icons/sort-20.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.sort_revert{
+    background-image: url('/img/icons/soft-revert-20.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.sort:hover{
+    background-image: url('/img/icons/sort-color-20.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.sort_revert:hover{
+    background-image: url('/img/icons/sort-revert-color-20.png');
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .right-block__switcher {
@@ -561,7 +650,7 @@ body{
     width: 143px;
     background: #FBE0DC;
     border-radius: 10px;
-    padding: 12px 0;
+    padding: 12px 0 12px 36px;
     font-weight: 500;
     font-style: normal;
     font-size: 12px;
@@ -569,10 +658,17 @@ body{
     letter-spacing: 2px;
     color: #FF868E;
     text-transform: uppercase;
+    background-image: url('/img/icons/upload-16.png');
+    background-repeat: no-repeat;
+    background-position: 30px 12px;
 }
 
-.right-block__upload_btn button img{
-    margin: 0 10px 0 0;
+.right-block__upload_btn button:hover{
+    background: #FF868E;
+    background-image: url('/img/icons_white/upload-white-16.png');
+    background-repeat: no-repeat;
+    background-position: 30px 12px;
+    color: #fff;
 }
 
 .right-block__filter {
@@ -602,18 +698,38 @@ body{
     width: 290px;
     padding: 8px 10px;
     border-radius: 10px;
+    border: 2px solid #fff;
+}
+
+.right-block__sec select:hover{
+    border: 2px solid #FBE0DC;
+}
+
+.limit_sec div{
+    display: flex;
+    flex-direction: row;
 }
 
 .limit_sec select{
     width: 240px;
 }
 
-.limit_sec button{
+.btn_update{
     background: #fff;
     width: 40px;
     height: 40px;
     border-radius: 10px;
     margin: 0 0 0 5px;
+    background-image: url('/img/icons/update-20.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.btn_update:hover{
+    background: #FF868E;
+    background-image: url('/img/icons_white/update-white-20.png');
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .right-block__id-breed{
