@@ -1,28 +1,10 @@
-<div class="right-block__nav">
-    <div class="right-block__searcher">
-        <input type="text" placeholder="Search for breeds by name">
-    </div>
-    <div class="right-block__search-btn">
-        <button id="nav_search"></button>
-    </div>
-    <div class="right-block__icon tab_1">
-        <button id="nav_like"></button>
-    </div>
-    <div class="right-block__icon tab_2">
-        <button id="nav_fav"></button>
-    </div>
-    <div class="right-block__icon tab_3">
-        <button id="nav_dislike"></button>
-    </div>
-</div>
-<div class="right-block__content">
     <div class="right-block__block-nav">
         <div class="right-block__back_btn">
-            <button id="nav_back"><img src="/img/icons/back-20.png" alt=""></button>
+            <button id="nav_back"></button>
         </div>
         <div class="right-block__section-title">gallery</div>
         <div class="right-block__upload_btn">
-            <button><img src="/img/icons/upload-16.png" alt="">upload</button>
+            <button>upload</button>
         </div>
     </div>
     <div class="right-block__filter">
@@ -52,13 +34,15 @@
         </div>
         <div class="right-block__sec limit_sec">
             <p>Limit</p>
-            <select name="limit" id="">
-                <option value="1">5 items per page</option>
-                <option value="2">10 items per page</option>
-                <option value="3">15 items per page</option>
-                <option value="4">20 items per page</option>
-            </select>
-            <button><img src="/img/icons/update-20.png" alt=""></button>
+            <div>
+                <select name="limit" id="">
+                    <option value="1">5 items per page</option>
+                    <option value="2">10 items per page</option>
+                    <option value="3">15 items per page</option>
+                    <option value="4">20 items per page</option>
+                </select>
+                <div class="btn_update"></div>
+            </div>
         </div>
     </div>
     <div class="right-block__breeds grid_body">
@@ -101,4 +85,3 @@
             <button id="btn_next"><span>next</span><img src="/img/icons/switcher.png" alt=""></button>
         </div>
     </div>
-</div>
