@@ -1,4 +1,6 @@
 import { likesBtn, favsBtn, dislikesBtn, btnVoting, btnBreeds, btnGallery, tabVoting, tabBreeds, tabGallery, arrBtns } from './app.js';
+import loadNavContentFromTabs from "./loadNavContent.js";
+
 //Function for resetting styles others buttons, which not chosen
 function resetStylesNoUsedButtons(btn) {
         for (let i = 0; i < arrBtns.length; i++){
@@ -25,7 +27,7 @@ function defaultBtnStyle(btn) {
                 backgroundImage: 'url(/img/icons/like-30.png)',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
-        })
+            })
         }
         else if (btn == dislikesBtn) {
             $(btn).css({
@@ -64,6 +66,8 @@ export default class animationBtnByClick{
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
             })
+            let load = new loadNavContentFromTabs(this.btn);
+            load.loadContent();
         }
         else if (this.btn == dislikesBtn) {
             $(this.btn).css({
@@ -72,6 +76,8 @@ export default class animationBtnByClick{
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
             })
+            let load = new loadNavContentFromTabs(this.btn);
+            load.loadContent();
         }
         else if (this.btn == favsBtn) {
             $(this.btn).css({
@@ -80,6 +86,8 @@ export default class animationBtnByClick{
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
             })
+            let load = new loadNavContentFromTabs(this.btn);
+            load.loadContent();
         }
         else if (this.btn == btnVoting) {
             $(this.btn).css({

@@ -2,14 +2,18 @@
 import AnimationBtnByHover from "./animationButtonsHover.js";
 import animationBtnByClick from "./animationButtonsClick.js";
 import loadNavAnimation from "./loadNavAnimation.js";
+import loadNavContentFromTabs from "./loadNavContent.js";
 //Exports
-export { likesBtn, favsBtn, dislikesBtn, btnVoting, btnBreeds, btnGallery, tabVoting, tabBreeds, tabGallery, arrBtns };
+export { likesBtn, favsBtn, dislikesBtn, btnVoting, btnBreeds, btnGallery, tabVoting, tabBreeds, tabGallery, arrBtns, switchNext, switchPrev };
 //Declare constants
 //Buttons
 const searchBtn = document.getElementById('nav_search');
 let likesBtn = '';
 let favsBtn = '';
 let dislikesBtn = '';
+let switchPrev = '';
+let switchNext = '';
+
 const btnVoting = document.getElementById('btn_voting');
 const btnBreeds = document.getElementById('btn_breeds');
 const btnGallery = document.getElementById('btn_gallery');
@@ -23,8 +27,20 @@ const rightBlock = document.querySelector('.right-block');
 //Arr buttons info
 const arrBtns = [{ btn: likesBtn, status: true }, { btn: favsBtn, status: true }, { btn: dislikesBtn, status: true },
     { btn: btnVoting, status: true }, { btn: btnBreeds, status: true}, { btn: btnGallery, status: true },
-    { btn: tabVoting, status: true }, { btn: tabBreeds, status: true }, { btn: tabGallery, status: true }
+    { btn: tabVoting, status: true }, { btn: tabBreeds, status: true }, { btn: tabGallery, status: true },
+    { btn: switchNext }, { btn: switchPrev },
 ];
+const data = []; //for breeds info
+$.ajax({
+    type: 'GET',
+    url: 'https://api.thecatapi.com/v1/breeds',
+    success: function (info) {
+        info.forEach(element => {
+            data.push(element);
+        });
+    }
+})
+console.log(data)
 
 //Function for resetting page
 function clearBox() {
@@ -37,9 +53,25 @@ function assignmentNav() {
     likesBtn = document.getElementById('nav_like');
     dislikesBtn = document.getElementById('nav_dislike');
     favsBtn = document.getElementById('nav_fav');
+    switchPrev = document.getElementById('btn_prev');
+    switchNext = document.getElementById('btn_next');
     arrBtns[0].btn = likesBtn;
     arrBtns[1].btn = favsBtn;
     arrBtns[2].btn = dislikesBtn;
+    arrBtns[9].btn = switchNext;
+    arrBtns[10].btn = switchPrev;
+}
+
+//Function for preference page for adding content by click
+function createFrame() {
+    let nav = document.createElement('div');
+    nav.className = 'right-block__nav';
+
+    let content = document.createElement('div');
+    content.className = 'right-block__content';
+
+    rightBlock.insertAdjacentElement('afterbegin', nav);
+    rightBlock.insertAdjacentElement('beforeend', content);
 }
 
 //Animation by click
@@ -47,89 +79,228 @@ function assignmentNav() {
 $('#btn_voting').click(function () {
     let animation = new animationBtnByClick(arrBtns[3]);
     animation.animationBtnClick();
-    clearBox;
-    $.ajax({
-        type: 'GET',
-        url: '/pages/voting.html',
-        success: function (html) {
-            $('.right-block').html(html);
-            assignmentNav();
-            loadNavAnimation();
-        }
-    })
+    if (!rightBlock.querySelector('.right-block__nav')) {
+        clearBox();
+        createFrame();
+        $.ajax({
+            type: 'GET',
+            url: '/pages/nav.html',
+            success: function (html) {
+                $('.right-block__nav').html(html);
+                assignmentNav();
+                loadNavAnimation();
+            }
+        })
+        $.ajax({
+            type: 'GET',
+            url: '/pages/voting.html',
+            success: function (html) {
+                $('.right-block__content').html(html);
+                assignmentNav();
+                loadNavAnimation();
+            }
+        })
+    }
+    else {
+        $.ajax({
+            type: 'GET',
+            url: '/pages/voting.html',
+            success: function (html) {
+                $('.right-block__content').html(html);
+                assignmentNav();
+                loadNavAnimation();
+            }
+        })
+    }
+    
 });
 
 $('#btn_breeds').click(function () {
     let animation = new animationBtnByClick(arrBtns[4]);
     animation.animationBtnClick();
-    clearBox;
+    if (!rightBlock.querySelector('.right-block__nav')) {
+        clearBox();
+        createFrame();
+        $.ajax({
+        type: 'GET',
+        url: '/pages/nav.html',
+        success: function (html) {
+            $('.right-block__nav').html(html);
+            assignmentNav();
+            loadNavAnimation();
+        }
+    })
     $.ajax({
         type: 'GET',
         url: '/pages/breeds.html',
         success: function (html) {
-            $('.right-block').html(html);
+            $('.right-block__content').html(html);
             assignmentNav();
             loadNavAnimation();
         }
     })
+    }
+    else {
+        $.ajax({
+        type: 'GET',
+        url: '/pages/breeds.html',
+        success: function (html) {
+            $('.right-block__content').html(html);
+            assignmentNav();
+            loadNavAnimation();
+        }
+    })
+    }
 });
 $('#btn_gallery').click(function () {
     let animation = new animationBtnByClick(arrBtns[5]);
     animation.animationBtnClick();
-    clearBox;
-    $.ajax({
+    if (!rightBlock.querySelector('.right-block__nav')) {
+        clearBox();
+        createFrame();
+        $.ajax({
         type: 'GET',
-        url: '/pages/gallery.html',
+        url: '/pages/nav.html',
         success: function (html) {
-            $('.right-block').html(html);
+            $('.right-block__nav').html(html);
             assignmentNav();
             loadNavAnimation();
         }
     })
+    $.ajax({
+        type: 'GET',
+        url: '/pages/gallery.html',
+        success: function (html) {
+            $('.right-block__content').html(html);
+            assignmentNav();
+            loadNavAnimation();
+        }
+    })
+    }
+    else {
+        $.ajax({
+        type: 'GET',
+        url: '/pages/gallery.html',
+        success: function (html) {
+            $('.right-block__content').html(html);
+            assignmentNav();
+            loadNavAnimation();
+        }
+    })
+    }
 });
 //Tabs
 $('#tab_voting').click(function () {
     let animation = new animationBtnByClick(arrBtns[6]);
     animation.animationBtnClick();
-    clearBox;
+    if (!rightBlock.querySelector('.right-block__nav')) {
+        clearBox();
+        createFrame();
+        $.ajax({
+        type: 'GET',
+        url: '/pages/nav.html',
+        success: function (html) {
+            $('.right-block__nav').html(html);
+            assignmentNav();
+            loadNavAnimation();
+        }
+    })
     $.ajax({
         type: 'GET',
         url: '/pages/voting.html',
         success: function (html) {
-            $('.right-block').html(html);
+            $('.right-block__content').html(html);
             assignmentNav();
             loadNavAnimation();
         }
     })
+    }
+    else {
+        $.ajax({
+        type: 'GET',
+        url: '/pages/voting.html',
+        success: function (html) {
+            $('.right-block__content').html(html);
+            assignmentNav();
+            loadNavAnimation();
+        }
+    })
+    }
 });
 $('#tab_breeds').click(function () {
     let animation = new animationBtnByClick(arrBtns[7]);
     animation.animationBtnClick();
-    clearBox;
-    $.ajax({
-        type: 'GET',
-        url: '/pages/breeds.html',
-        success: function (html) {
-            $('.right-block').html(html);
-            assignmentNav();
-            loadNavAnimation();
-        }
-    })
+    if (!rightBlock.querySelector('.right-block__nav')) {
+        clearBox();
+        createFrame();
+        $.ajax({
+            type: 'GET',
+            url: '/pages/nav.html',
+            success: function (html) {
+                $('.right-block__nav').html(html);
+                assignmentNav();
+                loadNavAnimation();
+            }
+        })
+        $.ajax({
+            type: 'GET',
+            url: '/pages/breeds.html',
+            success: function (html) {
+                $('.right-block__content').html(html);
+                assignmentNav();
+                loadNavAnimation();
+            }
+        })
+    }
+    else {
+        $.ajax({
+            type: 'GET',
+            url: '/pages/breeds.html',
+            success: function (html) {
+                $('.right-block__content').html(html);
+                assignmentNav();
+                loadNavAnimation();
+            }
+        })
+    }
+    
 });
 $('#tab_gallery').click(function () {
     let animation = new animationBtnByClick(arrBtns[8]);
     animation.animationBtnClick();
-    clearBox;
-    $(rightBlock).load('/pages/gallery.html');
-    $.ajax({
-        type: 'GET',
-        url: '/pages/gallery.html',
-        success: function (html) {
-            $('.right-block').html(html);
-            assignmentNav();
-            loadNavAnimation();
-        }
-    })
+    if (!rightBlock.querySelector('.right-block__nav')) {
+        clearBox();
+        createFrame();
+        $.ajax({
+            type: 'GET',
+            url: '/pages/nav.html',
+            success: function (html) {
+                $('.right-block__nav').html(html);
+                assignmentNav();
+                loadNavAnimation();
+            }
+        })
+        $.ajax({
+            type: 'GET',
+            url: '/pages/gallery.html',
+            success: function (html) {
+                $('.right-block__content').html(html);
+                assignmentNav();
+                loadNavAnimation();
+            }
+        })
+    }
+    else {
+        $.ajax({
+            type: 'GET',
+            url: '/pages/gallery.html',
+            success: function (html) {
+                $('.right-block__content').html(html);
+                assignmentNav();
+                loadNavAnimation();
+            }
+        })
+    }
 });
 
 //Animation by hover
