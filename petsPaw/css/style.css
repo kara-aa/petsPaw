@@ -589,7 +589,14 @@ body{
 
 .right-block__grid-item {
     border-radius: 20px;
-    
+    position: relative;
+}
+
+.right-block__grid-item div {
+    position: absolute;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
 }
 
 .right-block__grid-item img{
@@ -597,6 +604,10 @@ body{
     border-radius: 20px;
     width: 100%;
     height: 100%;
+}
+
+.right-block__grid-item div:hover{
+    background: rgba(255, 134, 142, 0.6);
 }
 
 .right-block__grid-item.item_1{
