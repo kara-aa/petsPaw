@@ -1,17 +1,14 @@
 import { likesBtn, favsBtn, dislikesBtn, btnVoting, btnBreeds, btnGallery, tabVoting, tabBreeds, tabGallery, switchNext, switchPrev } from './app.js';
+
+function animationCard() {
+    
+}
+
 export default class AnimationBtnByHover{
     constructor(btn) {
         this.btn = btn.btn;
         this.status = btn.status;
     }
-
-    // //Function for getting status btn (active or no)
-    // getStatusBtn(btn) {
-    //         for (let i = 0; i < arrBtns.length; i++){
-    //             if (btn == arrBtns[i].btn)
-    //                 return arrBtns[i].status;
-    //         }
-    // }
     
     //Animation by hover
     animationBtnMouseOver() {

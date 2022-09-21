@@ -59,6 +59,7 @@ export default class animationBtnByClick{
     }
 
     animationBtnClick() {
+        let loadNavContent = new loadNavContentFromTabs(this.btn);
         if (this.btn == likesBtn) {
             $(this.btn).css({
                 background:'#FF868E',
@@ -66,8 +67,7 @@ export default class animationBtnByClick{
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
             })
-            let load = new loadNavContentFromTabs(this.btn);
-            load.loadContent();
+            loadNavContent.loadContent();
         }
         else if (this.btn == dislikesBtn) {
             $(this.btn).css({
@@ -76,8 +76,7 @@ export default class animationBtnByClick{
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
             })
-            let load = new loadNavContentFromTabs(this.btn);
-            load.loadContent();
+            loadNavContent.loadContent();
         }
         else if (this.btn == favsBtn) {
             $(this.btn).css({
@@ -86,8 +85,7 @@ export default class animationBtnByClick{
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
             })
-            let load = new loadNavContentFromTabs(this.btn);
-            load.loadContent();
+            loadNavContent.loadContent();
         }
         else if (this.btn == btnVoting) {
             $(this.btn).css({
