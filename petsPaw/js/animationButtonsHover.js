@@ -1,13 +1,12 @@
 import { likesBtn, favsBtn, dislikesBtn, btnVoting, btnBreeds, btnGallery, tabVoting, tabBreeds, tabGallery, switchNext, switchPrev } from './app.js';
 
-function animationCard() {
-    
-}
-
 export default class AnimationBtnByHover{
     constructor(btn) {
         this.btn = btn.btn;
         this.status = btn.status;
+        if(btn.index)
+            this.index = btn.index;
+        console.log(this.index)
     }
     
     //Animation by hover
@@ -64,6 +63,10 @@ export default class AnimationBtnByHover{
                 color: '#fff',
             })
             $('#btn_prev img').attr('src', '/img/icons_white/switcher-white.png');
+        }
+        else if (this.btn == $('.right-block__grid-item')[this.index]) {
+            this.btn.insertAdjacentElement('afterbegin', createButtonHover('breeds'));
+            
         }
         
     }
@@ -122,4 +125,17 @@ export default class AnimationBtnByHover{
             $('#btn_prev img').attr('src', '/img/icons/switcher.png');
         }
     }
+}
+
+function createButtonHover(page) {
+    let divBtn = document.createElement('div');
+    
+    if (page == 'breeds') {
+        let p = document.createElement('p');
+        divBtn.className = 'right-block__btn-breed';
+        p.innerHTML = 'Abyssinian';
+        divBtn.insertAdjacentElement('afterbegin', p);
+    }
+    else if (page == 'gallery') { }
+    return divBtn;
 }

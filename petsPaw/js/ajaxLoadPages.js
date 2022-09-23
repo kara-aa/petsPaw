@@ -1,5 +1,6 @@
-import { assignmentNav, rightBlock } from './app.js';
+import { assignmentNav, rightBlock, arrBreeds } from './app.js';
 import loadNavAnimation from "./loadNavAnimation.js";
+import loadBodyAnimation from './loadBodyAnimation.js';
 export { card, ajaxLoadFunctionality };
 let card = '';
 //Function for preference page for adding content by click
@@ -21,9 +22,12 @@ function createCards(serialNumber) {
     let img = document.createElement('img');
 
     divCard.className = 'right-block__grid-item';
+    divHover.className = 'card-hover';
     divCard.classList.add(`item_${serialNumber}`);
     divCard.insertAdjacentElement('afterbegin', img);
     divCard.insertAdjacentElement('afterbegin', divHover);
+    arrBreeds.push({ btn: divCard, index: serialNumber - 1 });
+    
     return divCard;
 }
 
@@ -58,6 +62,7 @@ function ajaxLoadFunctionality(url, firstLoad) {
                         $('.grid_body')[0].insertAdjacentElement('beforeend', createCards(i));
                     }
                 }
+                loadBodyAnimation();
             }
         })
     }
@@ -74,6 +79,7 @@ function ajaxLoadFunctionality(url, firstLoad) {
                         $('.grid_body')[0].insertAdjacentElement('beforeend', createCards(i));
                     }
                 }
+                loadBodyAnimation();
             }
         })
     }

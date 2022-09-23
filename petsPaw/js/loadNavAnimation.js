@@ -1,4 +1,4 @@
-import { likesBtn, favsBtn, dislikesBtn, arrBtns, switchNext, switchPrev } from './app.js';
+import { likesBtn, favsBtn, dislikesBtn, arrBtns, switchNext, switchPrev, arrBreeds } from './app.js';
 import animationBtnByClick from './animationButtonsClick.js';
 import AnimationBtnByHover from './animationButtonsHover.js';
 

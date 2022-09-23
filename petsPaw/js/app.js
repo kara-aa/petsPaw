@@ -4,7 +4,10 @@ import animationBtnByClick from "./animationButtonsClick.js";
 import loadNavAnimation from "./loadNavAnimation.js";
 import { card, ajaxLoadFunctionality } from "./ajaxLoadPages.js";
 //Exports
-export { likesBtn, favsBtn, dislikesBtn, btnVoting, btnBreeds, btnGallery, tabVoting, tabBreeds, tabGallery, arrBtns, switchNext, switchPrev, assignmentNav, rightBlock };
+export {
+    likesBtn, favsBtn, dislikesBtn, btnVoting, btnBreeds, btnGallery, tabVoting, tabBreeds, tabGallery, arrBtns, switchNext, switchPrev,
+    assignmentNav, rightBlock, arrBreeds,
+};
 //Declare constants
 //Buttons
 const searchBtn = document.getElementById('nav_search');
@@ -30,6 +33,7 @@ const arrBtns = [{ btn: likesBtn, status: true }, { btn: favsBtn, status: true }
     { btn: tabVoting, status: true }, { btn: tabBreeds, status: true }, { btn: tabGallery, status: true },
     { btn: switchNext }, { btn: switchPrev },
 ];
+const arrBreeds = [];
 const data = []; //for breeds info
 $.ajax({
     type: 'GET',
