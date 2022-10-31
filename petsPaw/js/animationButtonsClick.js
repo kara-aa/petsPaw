@@ -1,5 +1,6 @@
 import { likesBtn, favsBtn, dislikesBtn, btnVoting, btnBreeds, btnGallery, tabVoting, tabBreeds, tabGallery, arrBtns } from './app.js';
-import loadNavContentFromTabs from "./loadNavContent.js";
+import { ajaxLoadFunctionality } from "./ajaxLoadPages.js";
+export { animationBtnByClick, animationBtnBodyByClick };
 
 //Function for resetting styles others buttons, which not chosen
 function resetStylesNoUsedButtons(btn) {
@@ -49,17 +50,26 @@ function defaultBtnStyle(btn) {
             $(btn).css({
                 border: '4px solid rgba(255, 255, 255, 0.6)',
         })
-        }
     }
+}
     
-export default class animationBtnByClick{
+function loadContent(url) {
+    $.ajax({
+        type: 'GET',
+        url: url,
+        success: function (html) {
+            $('.right-block__content').html(html);
+        }
+    })
+}
+    
+class animationBtnByClick{
     constructor(btn) {
         this.btn = btn.btn;
         this.status = btn.status;
     }
 
     animationBtnClick() {
-        let loadNavContent = new loadNavContentFromTabs(this.btn);
         if (this.btn == likesBtn) {
             $(this.btn).css({
                 background:'#FF868E',
@@ -67,7 +77,7 @@ export default class animationBtnByClick{
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
             })
-            loadNavContent.loadContent();
+            loadContent('/pages/likes.html');
         }
         else if (this.btn == dislikesBtn) {
             $(this.btn).css({
@@ -76,7 +86,7 @@ export default class animationBtnByClick{
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
             })
-            loadNavContent.loadContent();
+            loadContent('/pages/dislikes.html');
         }
         else if (this.btn == favsBtn) {
             $(this.btn).css({
@@ -85,7 +95,7 @@ export default class animationBtnByClick{
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
             })
-            loadNavContent.loadContent();
+            loadContent('/pages/favorites.html');
         }
         else if (this.btn == btnVoting) {
             $(this.btn).css({
@@ -156,5 +166,37 @@ export default class animationBtnByClick{
         
         if(this.btn == $('#nav_like')[0] || this.btn == dislikesBtn || this.btn == favsBtn)
             resetStylesNoUsedButtons(this.btn);
+    }
+}
+
+class animationBtnBodyByClick{
+    constructor(btn) {
+        this.btn = btn;
+    }
+
+    animationBtnByClick() {
+        if (this.btn == $('#btn_upload')[0]) {
+            $.ajax({
+                type: 'GET',
+                url: '/pages/upload.html',
+                success: function (html) {
+                    $('.right-block').html(html);
+                    let divShadow = document.createElement('div');
+                    divShadow.className = 'upload__shadow';
+                    document.querySelector('.container').insertAdjacentElement('afterbegin', divShadow);
+                }
+            })
+        }
+        else if (this.btn == $('#btn_close')[0]) {
+            $.ajax({
+                type: 'GET',
+                url: '/pages/gallery.html',
+                success: function (html) {
+                    $('.right-block__content').html(html);
+                    document.querySelector('.container').removeChild(document.querySelector('.container').firstChild);
+                    ajaxLoadFunctionality('/pages/gallery.html', true);
+                }
+            })
+        }
     }
 }

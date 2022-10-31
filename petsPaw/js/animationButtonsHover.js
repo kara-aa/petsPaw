@@ -1,12 +1,10 @@
-import { likesBtn, favsBtn, dislikesBtn, btnVoting, btnBreeds, btnGallery, tabVoting, tabBreeds, tabGallery, switchNext, switchPrev } from './app.js';
-
-export default class AnimationBtnByHover{
+import {
+    likesBtn, favsBtn, dislikesBtn, btnVoting, btnBreeds, btnGallery, tabVoting, tabBreeds, tabGallery, switchNext, switchPrev,} from './app.js';
+export { AnimationBtnByHover};
+class AnimationBtnByHover{
     constructor(btn) {
         this.btn = btn.btn;
         this.status = btn.status;
-        if(btn.index)
-            this.index = btn.index;
-        console.log(this.index)
     }
     
     //Animation by hover
@@ -45,30 +43,7 @@ export default class AnimationBtnByHover{
             $(this.btn).css({
                 border: '4px solid #F8F8F7',
         })
-        }
-        else if (this.btn == switchNext) {
-            $(this.btn).css({
-                background: '#FF868E',
-            })
-            $('#btn_next span').css({
-                color: '#fff',
-            })
-            $('#btn_next img').attr('src', '/img/icons_white/switcher-white.png');
-        }
-        else if (this.btn == switchPrev) {
-            $(this.btn).css({
-                background: '#FF868E',
-            })
-            $('#btn_prev span').css({
-                color: '#fff',
-            })
-            $('#btn_prev img').attr('src', '/img/icons_white/switcher-white.png');
-        }
-        else if (this.btn == $('.right-block__grid-item')[this.index]) {
-            this.btn.insertAdjacentElement('afterbegin', createButtonHover('breeds'));
-            
-        }
-        
+        }        
     }
 
     animationBtnMouseOut() {
@@ -106,36 +81,5 @@ export default class AnimationBtnByHover{
                 border: '4px solid rgba(255, 255, 255, 0.6)',
             })
         }
-        else if (this.btn == switchNext) {
-            $(this.btn).css({
-                background: '#FBE0DC',
-            })
-            $('#btn_next span').css({
-                color: '#FF868E',
-            })
-            $('#btn_next img').attr('src', '/img/icons/switcher.png');
-        }
-        else if (this.btn == switchPrev) {
-            $(this.btn).css({
-                background: '#FBE0DC',
-            })
-            $('#btn_prev span').css({
-                color: '#FF868E',
-            })
-            $('#btn_prev img').attr('src', '/img/icons/switcher.png');
-        }
     }
-}
-
-function createButtonHover(page) {
-    let divBtn = document.createElement('div');
-    
-    if (page == 'breeds') {
-        let p = document.createElement('p');
-        divBtn.className = 'right-block__btn-breed';
-        p.innerHTML = 'Abyssinian';
-        divBtn.insertAdjacentElement('afterbegin', p);
-    }
-    else if (page == 'gallery') { }
-    return divBtn;
 }

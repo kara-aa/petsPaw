@@ -1,6 +1,6 @@
-import { likesBtn, favsBtn, dislikesBtn, arrBtns, switchNext, switchPrev, arrBreeds } from './app.js';
-import animationBtnByClick from './animationButtonsClick.js';
-import AnimationBtnByHover from './animationButtonsHover.js';
+import { likesBtn, favsBtn, dislikesBtn, arrBtns, switchNext, switchPrev, } from './app.js';
+import { animationBtnByClick } from './animationButtonsClick.js';
+import { AnimationBtnByHover } from './animationButtonsHover.js';
 
 export default function loadNavAnimation() {
     animationNavByHover();
@@ -45,22 +45,6 @@ export default function loadNavAnimation() {
         });
         $(favsBtn).mouseout(function () {
             let animation = new AnimationBtnByHover(arrBtns[1]);
-            animation.animationBtnMouseOut();
-        });
-        $(switchNext).mouseover(function () {
-            let animation = new AnimationBtnByHover(arrBtns[9]);
-            animation.animationBtnMouseOver();
-        });
-        $(switchNext).mouseout(function () {
-            let animation = new AnimationBtnByHover(arrBtns[9]);
-            animation.animationBtnMouseOut();
-        });
-        $(switchPrev).mouseover(function () {
-            let animation = new AnimationBtnByHover(arrBtns[10]);
-            animation.animationBtnMouseOver();
-        });
-        $(switchPrev).mouseout(function () {
-            let animation = new AnimationBtnByHover(arrBtns[10]);
             animation.animationBtnMouseOut();
         });
     }

@@ -559,7 +559,7 @@ body{
     padding: 12px 30px;
 }
 
-.right-block__switcher-item span{
+.right-block__switcher-item span {
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
@@ -567,16 +567,34 @@ body{
     text-transform: uppercase;
 }
 
-.right-block__switcher-item:first-child img {
-    transform: scaleX(-1);
+.right-block__switcher-item:first-child span:before {
+    content: url(/img/icons/switcher-reverse.png);
     margin: 1.5px 10px 0 0;
 }
 
-.right-block__switcher-item:last-child img {
+
+
+.right-block__switcher-item:last-child span:after {
+    content: url(/img/icons/switcher.png);
     margin: 1.5px 0 0 10px;
 }
 
-.right-block__breeds {}
+.right-block__switcher-item button:hover{
+    background: #FF868E;
+    color: #fff;
+}
+
+.right-block__switcher-item:hover:first-child span:before {
+    content: url(/img/icons_white/switcher-white-reverse.png);
+}
+
+.right-block__switcher-item:hover:last-child span:after {
+    content: url(/img/icons_white/switcher-white.png);
+}
+
+.right-block__switcher-item:hover span {
+    color: #fff;
+}
 
 .grid_body {
     display: grid;
@@ -592,8 +610,51 @@ body{
     position: relative;
 }
 
-.right-block__grid-item div {
+.right-block__btn-breed{
     position: absolute;
+    left: 5%;
+    bottom: 10px;
+    z-index: 2;
+    border-radius: 10px;
+    width: 90%;
+    height: 34px;
+}
+
+.right-block__grid-item:hover .right-block__btn-breed{
+    background: #fff;
+}
+
+.right-block__grid-item:hover .right-block__btn-gallery {
+    background: #fff;
+    background-image: url(/img/icons/fav-20.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.right-block__btn-gallery{
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.right-block__btn-breed p{
+    color: #FF868E;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 5px 0 0 0;
+}
+
+.card-hover {
+    position: absolute;
+    z-index: 1;
     border-radius: 20px;
     width: 100%;
     height: 100%;
@@ -606,7 +667,7 @@ body{
     height: 100%;
 }
 
-.right-block__grid-item div:hover{
+.card-hover:hover{
     background: rgba(255, 134, 142, 0.6);
 }
 
@@ -657,11 +718,11 @@ body{
     margin: 0 0 0 291px;
 }
 
-.right-block__upload_btn button{
+.right-block__upload_btn{
     width: 143px;
     background: #FBE0DC;
     border-radius: 10px;
-    padding: 12px 0 12px 36px;
+    padding: 12px 0 12px 56px;
     font-weight: 500;
     font-style: normal;
     font-size: 12px;
@@ -674,7 +735,7 @@ body{
     background-position: 30px 12px;
 }
 
-.right-block__upload_btn button:hover{
+.right-block__upload_btn:hover{
     background: #FF868E;
     background-image: url('/img/icons_white/upload-white-16.png');
     background-repeat: no-repeat;
@@ -830,6 +891,29 @@ body{
 
 .right-block__life {
     grid-area: life;
+}
+
+.content_ulpoad{
+    background: #F8F8F7;
+}
+
+.right-block__btn-close {
+    background: #fff;
+    background-image: url(/img/icons/close-20.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    right: 20px;
+    border-radius: 10px;
+}
+
+.right-block__btn-close:hover{
+    background: #FF868E;
+    background-image: url(/img/icons_white/close-white-20.png);
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .upload__title {

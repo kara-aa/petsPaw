@@ -1,26 +1,20 @@
-import { arrBreeds } from './app.js';
-import AnimationBtnByHover from './animationButtonsHover.js';
-
-function findNeededCardInArray(card) {
-    let neededArrCard = '';
-    arrBreeds.forEach((element, index) => {
-        if (element.btn == card)
-            neededArrCard = arrBreeds[index];
-    })
-    return neededArrCard;
-}
+import { arrBreeds, arrGallery, arrBtns } from './app.js';
+import { AnimationBtnByHover } from './animationButtonsHover.js';
+import { animationBtnBodyByClick } from './animationButtonsClick.js';
 
 //Function for loading breeds and gallery cards hover
 export default function loadBodyAnimation() {
-    arrBreeds.forEach((element, index) => {
-        $(element.btn).mouseover(function () {
-        console.log(arrBreeds[index])
-        let animation = new AnimationBtnByHover(arrBreeds[index-1]);
-        animation.animationBtnMouseOver();
-        }) 
+    $('.select_limit').change(function () {
+        
     })
-    //    $('.right-block__grid-item').mouseover(function () {
-    //     let animation = new AnimationBtnByHover(findNeededCardInArray($(this)[0]));
-    //     animation.animationBtnMouseOver();
-    //     }) 
+    $('#btn_upload').click(function () {
+        let animation = new animationBtnBodyByClick(this);
+        animation.animationBtnByClick();
+        setTimeout(function () { 
+            $('#btn_close').click(function () {
+                let animation = new animationBtnBodyByClick(this);
+                animation.animationBtnByClick();
+            })
+        }, 10)
+    })
 }

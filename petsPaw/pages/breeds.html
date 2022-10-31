@@ -4,16 +4,14 @@
         </div>
         <div class="right-block__section-title">breeds</div>
         <div class="right-block__list breeds_list">
-            <select>
+            <select id="select_breeds">
                 <option value="1">All breeds</option>
-                <option value="2">Abyssinian</option>
-                <option value="3">Aegean</option>
-                <option value="4">American Bobtail</option>
+                
             </select>
         </div>
         <div class="right-block__list limits_list">
-            <select>
-                <option value="5">Limit: 5</option>
+            <select class="select_limit"  name="select_limit">
+                <option selected value="5">Limit: 5</option>
                 <option value="10">Limit: 10</option>
                 <option value="15">Limit: 15</option>
                 <option value="20">Limit: 20</option>
@@ -26,53 +24,14 @@
             </div>
         </div>
     </div>
-    <div class="right-block__breeds grid_body">
-        <!-- <div class="right-block__grid-item item_1" id="111">
-            <div></div>
-            <img src="/img/cats/1.jpg" alt="">
-        </div>
-        <div class="right-block__grid-item item_2">
-            <div></div>
-            <img src="/img/cats/2.jpg" alt="">
-        </div>
-        <div class="right-block__grid-item item_3">
-            <div></div>
-            <img src="/img/cats/3.jpg" alt="">
-        </div>
-        <div class="right-block__grid-item item_4">
-            <div></div>
-            <img src="/img/cats/5.jpg" alt="">
-        </div>
-        <div class="right-block__grid-item item_5">
-            <div></div>
-            <img src="/img/cats/image 1.png" alt="">
-        </div>
-        <div class="right-block__grid-item item_6">
-            <div></div>
-            <img src="/img/cats/5.jpg" alt="">
-        </div>
-        <div class="right-block__grid-item item_7">
-            <div></div>
-            <img src="/img/cats/3.jpg" alt="">
-        </div>
-        <div class="right-block__grid-item item_8">
-            <div></div>
-            <img src="/img/cats/image 1.png" alt="">
-        </div>
-        <div class="right-block__grid-item item_9">
-            <div></div>
-            <img src="/img/cats/2.jpg" alt="">
-        </div>
-        <div class="right-block__grid-item item_10">
-            <div></div>
-            <img src="/img/cats/1.jpg" alt="">
-        </div> -->
+    <div class="right-block__breeds grid_body" id="grid-body_breeds">
+        
     </div>
     <div class="right-block__switcher">
         <div class="right-block__switcher-item">
-            <button id="btn_prev"><img src="/img/icons/switcher.png" alt=""><span>prev</span></button>
+            <button id="btn_prev"><span>prev</span></button>
         </div>
         <div class="right-block__switcher-item">
-            <button id="btn_next"><span>next</span><img src="/img/icons/switcher.png" alt=""></button>
+            <button id="btn_next"><span>next</span></button>
         </div>
     </div>

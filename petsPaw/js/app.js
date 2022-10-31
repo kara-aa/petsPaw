@@ -1,12 +1,11 @@
 //Imports
-import AnimationBtnByHover from "./animationButtonsHover.js";
-import animationBtnByClick from "./animationButtonsClick.js";
-import loadNavAnimation from "./loadNavAnimation.js";
-import { card, ajaxLoadFunctionality } from "./ajaxLoadPages.js";
+import { AnimationBtnByHover } from "./animationButtonsHover.js";
+import { animationBtnByClick } from "./animationButtonsClick.js";
+import { ajaxLoadFunctionality } from "./ajaxLoadPages.js";
 //Exports
 export {
     likesBtn, favsBtn, dislikesBtn, btnVoting, btnBreeds, btnGallery, tabVoting, tabBreeds, tabGallery, arrBtns, switchNext, switchPrev,
-    assignmentNav, rightBlock, arrBreeds,
+    assignmentNav, rightBlock, arrBreeds, arrGallery, listBreeds
 };
 //Declare constants
 //Buttons
@@ -26,37 +25,47 @@ const tabBreeds = document.getElementById('tab_breeds');
 const tabGallery = document.getElementById('tab_gallery');
 //Blocks
 const rightBlock = document.querySelector('.right-block');
-// const nav = document.querySelector('.right-block__nav');
 //Arr buttons info
 const arrBtns = [{ btn: likesBtn, status: true }, { btn: favsBtn, status: true }, { btn: dislikesBtn, status: true },
     { btn: btnVoting, status: true }, { btn: btnBreeds, status: true}, { btn: btnGallery, status: true },
     { btn: tabVoting, status: true }, { btn: tabBreeds, status: true }, { btn: tabGallery, status: true },
-    { btn: switchNext }, { btn: switchPrev },
 ];
 const arrBreeds = [];
-const data = []; //for breeds info
-$.ajax({
-    type: 'GET',
-    url: 'https://api.thecatapi.com/v1/breeds',
-    success: function (info) {
-        info.forEach(element => {
-            data.push(element);
-        });
-    }
-})
+const arrGallery = [];
+const listBreeds = [];
+const data = [];
+
+console.log(data);
+loadAPI();
+//Function for load all started API info
+function loadAPI() {
+    //Load main info in array
+    $.ajax({
+        type: 'GET',
+        url: 'https://api.thecatapi.com/v1/breeds',
+        success: function (info) {
+            info.forEach(element => {
+                data.push(element);
+            });
+        }
+    })
+
+    setTimeout(function () {
+        data.forEach(cat => {
+            listBreeds.push({ id: cat.id, name: cat.name });
+        })
+    }, 1000);
+}
+
 
 //Function for assigmenting tabs' navigation
 function assignmentNav() {
     likesBtn = document.getElementById('nav_like');
     dislikesBtn = document.getElementById('nav_dislike');
     favsBtn = document.getElementById('nav_fav');
-    switchPrev = document.getElementById('btn_prev');
-    switchNext = document.getElementById('btn_next');
     arrBtns[0].btn = likesBtn;
     arrBtns[1].btn = favsBtn;
     arrBtns[2].btn = dislikesBtn;
-    arrBtns[9].btn = switchNext;
-    arrBtns[10].btn = switchPrev;
 }
 
 //Animation by click
